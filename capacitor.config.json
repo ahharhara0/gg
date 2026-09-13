@@ -1,0 +1,18 @@
+{
+  "appId": "com.hadramouthyper.app",
+  "appName": "Hadramout Hyper",
+  "webDir": "dist",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https",
+    "cleartext": false
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 1500,
+      "launchAutoHide": true,
+      "backgroundColor": "#0E8A5E",
+      "androidScaleType": "CENTER_CROP"
+    }
+  }
+}

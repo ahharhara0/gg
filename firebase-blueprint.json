@@ -1,0 +1,183 @@
+{
+  "entities": {
+    "Product": {
+      "title": "Product",
+      "description": "A store grocery product available for purchase in Hadramout Hyper",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "nameEn": { "type": "string" },
+        "category": { "type": "string" },
+        "price": { "type": "number" },
+        "originalPrice": { "type": "number" },
+        "unit": { "type": "string" },
+        "image": { "type": "string" },
+        "rating": { "type": "number" },
+        "reviewsCount": { "type": "number" },
+        "inStock": { "type": "boolean" },
+        "stockCount": { "type": "number" },
+        "badge": { "type": "string" },
+        "origin": { "type": "string" },
+        "description": { "type": "string" },
+        "merchantId": { "type": "string" },
+        "merchantName": { "type": "string" }
+      },
+      "required": ["id", "name", "category", "price", "unit", "image", "inStock"]
+    },
+    "Category": {
+      "title": "Category",
+      "description": "Category classification for products and navigation",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "nameEn": { "type": "string" },
+        "icon": { "type": "string" },
+        "color": { "type": "string" },
+        "order": { "type": "number" },
+        "isVisible": { "type": "boolean" }
+      },
+      "required": ["id", "name", "order", "isVisible"]
+    },
+    "PaymentMethod": {
+      "title": "PaymentMethod",
+      "description": "Store payment method config managed by Admin",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "key": { "type": "string" },
+        "name": { "type": "string" },
+        "nameEn": { "type": "string" },
+        "bankOrIssuer": { "type": "string" },
+        "accountNumber": { "type": "string" },
+        "color": { "type": "string" },
+        "badge": { "type": "string" },
+        "isEnabled": { "type": "boolean" },
+        "isCod": { "type": "boolean" },
+        "minOrdersForCod": { "type": "number" },
+        "order": { "type": "number" }
+      },
+      "required": ["id", "name", "isEnabled", "order"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Customer purchase order",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "subtotal": { "type": "number" },
+        "discount": { "type": "number" },
+        "tax": { "type": "number" },
+        "deliveryFee": { "type": "number" },
+        "total": { "type": "number" },
+        "status": { "type": "string" },
+        "deliveryAddress": { "type": "string" },
+        "paymentMethod": { "type": "string" },
+        "branchName": { "type": "string" },
+        "customerPhone": { "type": "string" }
+      },
+      "required": ["id", "createdAt", "total", "status", "paymentMethod"]
+    },
+    "User": {
+      "title": "User",
+      "description": "Registered app user",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "role": { "type": "string" },
+        "status": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "name", "phone", "role", "status"]
+    },
+    "AuditLog": {
+      "title": "AuditLog",
+      "description": "Immutable audit log event for sensitive system, security, and administrative actions",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "actorId": { "type": "string" },
+        "actorName": { "type": "string" },
+        "actorRole": { "type": "string" },
+        "action": { "type": "string" },
+        "category": { "type": "string" },
+        "targetEntity": { "type": "string" },
+        "targetId": { "type": "string" },
+        "details": { "type": "string" },
+        "severity": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["timestamp", "actorName", "actorRole", "action", "category", "targetEntity"]
+    },
+    "SystemConfig": {
+      "title": "SystemConfig",
+      "description": "Central system configuration, feature flags, and kill switches",
+      "type": "object",
+      "properties": {
+        "flags": { "type": "object" },
+        "remote": { "type": "object" },
+        "killSwitches": { "type": "object" },
+        "updatedAt": { "type": "string" },
+        "updatedBy": { "type": "string" }
+      },
+      "required": ["flags", "remote", "killSwitches", "updatedAt"]
+    },
+    "Complaint": {
+      "title": "Complaint",
+      "description": "Customer complaints and service tickets",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "customerName": { "type": "string" },
+        "customerPhone": { "type": "string" },
+        "type": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "status": { "type": "string" },
+        "priority": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "customerName", "customerPhone", "title", "status"]
+    }
+  },
+  "firestore": {
+    "/products/{productId}": {
+      "schema": "Product",
+      "description": "Store items collection"
+    },
+    "/categories/{categoryId}": {
+      "schema": "Category",
+      "description": "Catalog categories collection"
+    },
+    "/paymentMethods/{paymentMethodId}": {
+      "schema": "PaymentMethod",
+      "description": "Configured payment gateways and wallets"
+    },
+    "/orders/{orderId}": {
+      "schema": "Order",
+      "description": "Orders collection"
+    },
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Users collection"
+    },
+    "/audit_logs/{logId}": {
+      "schema": "AuditLog",
+      "description": "Immutable security and operational audit logs"
+    },
+    "/system_config/{configId}": {
+      "schema": "SystemConfig",
+      "description": "Global system configuration, flags, and kill switches"
+    },
+    "/complaints/{complaintId}": {
+      "schema": "Complaint",
+      "description": "Customer complaints and tickets"
+    }
+  }
+}

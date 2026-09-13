@@ -1,0 +1,12 @@
+{
+  "name": "Remix حضرموت هايبر | Hadramout Hyper",
+  "description": "التطبيق الرسمي لحضرموت هايبر ماركت - تجربة تسوق هايبر ماركت عصرية فائقة السرعة مع الخريطة التفاعلية لتحديد موقع التوصيل والتتبع المباشر",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

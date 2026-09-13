@@ -1,0 +1,261 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // =========================================================================
+    // ZERO-TRUST RBAC HELPERS
+    // =========================================================================
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function getUserData() {
+      return isSignedIn()
+        ? get(/databases/$(database)/documents/users/$(request.auth.uid)).data
+        : null;
+    }
+
+    function getUserRole() {
+      return isSignedIn() && exists(/databases/$(database)/documents/users/$(request.auth.uid))
+        ? getUserData().role
+        : 'guest';
+    }
+
+    function getUserStatus() {
+      return isSignedIn() && exists(/databases/$(database)/documents/users/$(request.auth.uid))
+        ? getUserData().status
+        : 'guest';
+    }
+
+    function isSuperAdmin() { return getUserRole() == 'super_admin'; }
+    function isDeveloper()  { return getUserRole() == 'developer'; }
+    function isAdmin()      { return isSuperAdmin() || isDeveloper() || getUserRole() == 'admin'; }
+    function isOperations() { return isAdmin() || getUserRole() == 'operations'; }
+    function isFinance()    { return isAdmin() || getUserRole() == 'finance'; }
+    function isSupport()    { return isAdmin() || getUserRole() == 'support'; }
+    function isMerchant()   { return getUserRole() == 'merchant'; }
+    function isDriver()     { return getUserRole() == 'driver'; }
+    function isCustomer()   { return getUserRole() == 'customer'; }
+
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    // The list of fields that clients are FORBIDDEN from writing.
+    function isNotModifyingSensitiveUserFields() {
+      return !request.resource.data.diff(resource.data).affectedKeys()
+        .hasAny(['role', 'status', 'walletBalance', 'permissions', 'walletAccountId']);
+    }
+
+    function isNotModifyingSensitiveOrderFields() {
+      return !request.resource.data.diff(resource.data).affectedKeys()
+        .hasAny(['total', 'subtotal', 'discount', 'vat', 'deliveryFee',
+                 'paymentStatus', 'paymentReference', 'payableRemaining',
+                 'walletDeduction', 'audit']);
+    }
+
+    function isNotModifyingPaymentFields() {
+      return !request.resource.data.diff(resource.data).affectedKeys()
+        .hasAny(['status', 'verifiedAt', 'gatewayReference', 'gatewayPaymentId']);
+    }
+
+    // =========================================================================
+    // STORE CATALOG: Products (public read; admin/merchant write)
+    // =========================================================================
+    match /products/{productId} {
+      allow read: if true;
+      // Merchant may create/update only their own products.
+      allow create, update: if false;
+      // Stock decrement is BLOCKED on client — must go through backend API.
+      // (Backend uses Firebase Admin SDK which bypasses these rules.)
+      allow delete: if false;
+    }
+
+    // =========================================================================
+    // Categories (public read; admin write)
+    // =========================================================================
+    match /categories/{categoryId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // =========================================================================
+    // Payment Methods (public read; admin/finance write)
+    // =========================================================================
+    match /paymentMethods/{paymentMethodId} {
+      allow read: if true;
+      allow write: if false;
+    }
+    match /payment_methods/{paymentMethodId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // =========================================================================
+    // ORDERS — CLIENT CREATE IS FORBIDDEN. Backend creates orders via Admin SDK.
+    // =========================================================================
+    match /orders/{orderId} {
+      allow read: if isSignedIn() && (
+        isOperations() ||
+        isDriver() ||
+        isFinance() ||
+        isSupport() ||
+        resource.data.customerId == request.auth.uid ||
+        resource.data.customerPhone == request.auth.token.phone_number
+      );
+
+      // CRITICAL: clients CANNOT create orders directly. Only the backend
+      // (using Firebase Admin SDK) creates orders — after server-side price
+      // validation, stock reservation, and idempotency check.
+      allow create: if false;
+
+      // Updates must go through backend — but if a client updates their own
+      // order (e.g. notes), sensitive pricing fields are protected.
+      allow update: if isSignedIn() && (
+        isOperations() ||
+        isFinance() ||
+        (isDriver() && resource.data.driverId == request.auth.uid) ||
+        (resource.data.customerId == request.auth.uid && isNotModifyingSensitiveOrderFields())
+      );
+
+      allow delete: if isSignedIn() && isSuperAdmin();
+    }
+
+    // =========================================================================
+    // USERS — RBAC protected. Role/status/wallet NEVER writable from client.
+    // =========================================================================
+    match /users/{userId} {
+      allow read: if isSignedIn() && (
+        request.auth.uid == userId ||
+        isSupport() ||
+        isOperations() ||
+        isFinance() ||
+        isAdmin()
+      );
+
+      // New users are created by the BACKEND `/api/auth/register-user` endpoint
+      // (which uses Firebase Admin SDK). Clients cannot create users directly.
+      allow create: if false;
+
+      // Self-update: only safe fields (no role, status, walletBalance, permissions).
+      allow update: if isSignedIn() && (
+        (request.auth.uid == userId && isNotModifyingSensitiveUserFields()) ||
+        isDeveloper() ||
+        isSuperAdmin() ||
+        isFinance()
+      );
+
+      allow delete: if isSignedIn() && isSuperAdmin();
+    }
+
+    // =========================================================================
+    // WALLET ACCOUNTS — clients CANNOT read or write. Backend only.
+    // =========================================================================
+    match /wallet_accounts/{userId} {
+      // Allow self-read for balance display (alternative: use /api/wallet/balance).
+      allow read: if isSignedIn() && (
+        request.auth.uid == userId || isFinance() || isAdmin()
+      );
+      // Clients cannot create/update wallet accounts — backend only.
+      allow create, update, delete: if false;
+    }
+
+    // =========================================================================
+    // WALLET LEDGER — STRICTLY IMMUTABLE.
+    // =========================================================================
+    match /wallet_transactions/{txId} {
+      allow read: if isSignedIn() && (
+        resource.data.userId == request.auth.uid ||
+        isFinance() ||
+        isAdmin()
+      );
+      // Backend (Firebase Admin SDK) creates ledger entries.
+      allow create: if false;
+      // Strict financial ledger: NO MUTATION OR DELETION EVER.
+      allow update, delete: if false;
+    }
+
+    // =========================================================================
+    // PAYMENTS — clients cannot write payment records. Backend only.
+    // =========================================================================
+    match /payments/{paymentId} {
+      allow read: if isSignedIn() && (
+        resource.data.userId == request.auth.uid ||
+        isFinance() ||
+        isAdmin()
+      );
+      // Backend only — created by /api/payments/create (Firebase Admin).
+      allow create: if false;
+      // Update only by backend; clients cannot mark payments as PAID.
+      allow update: if false;
+      allow delete: if isSignedIn() && isSuperAdmin();
+    }
+
+    // Webhook event tracking — backend-only writes.
+    match /payment_webhook_events/{eventId} {
+      allow read: if isSignedIn() && (isFinance() || isAdmin());
+      allow create, update, delete: if false;
+    }
+
+    // =========================================================================
+    // COUPONS — public read; admin write.
+    // =========================================================================
+    match /coupons/{couponId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // =========================================================================
+    // AUDIT LOGS — APPEND-ONLY. NEVER MUTABLE OR DELETABLE.
+    // =========================================================================
+    match /audit_logs/{logId} {
+      allow read: if isSignedIn() && (isDeveloper() || isSuperAdmin() || isFinance());
+      // Audit logs are written by the backend via Firebase Admin SDK.
+      allow create: if false;
+      allow update, delete: if false;
+    }
+
+    // =========================================================================
+    // IDEMPOTENCY RECORDS — backend-only.
+    // =========================================================================
+    match /idempotency_keys/{keyId} {
+      allow read, write: if false;
+    }
+
+    // =========================================================================
+    // SYSTEM CONFIG — public read; admin/developer write.
+    // =========================================================================
+    match /system_config/{configId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // =========================================================================
+    // COMPLAINTS — users create their own; support/admin update.
+    // =========================================================================
+    match /complaints/{complaintId} {
+      allow read: if isSignedIn() && (
+        isSupport() ||
+        isAdmin() ||
+        resource.data.customerUid == request.auth.uid ||
+        resource.data.customerPhone == request.auth.token.phone_number
+      );
+      // Client-side create is allowed (with auth.uid stamped by rules).
+      // Note: the backend `/api/complaints` endpoint is preferred for production
+      // (it injects the verified UID server-side).
+      allow create: if isSignedIn() && request.resource.data.customerUid == request.auth.uid;
+      allow update: if isSignedIn() && (isSupport() || isAdmin());
+      allow delete: if isSignedIn() && isSuperAdmin();
+    }
+
+    // =========================================================================
+    // CONNECTION TEST — public.
+    // =========================================================================
+    match /_connection_test/{docId} {
+      allow read: if true;
+      allow write: if false;
+    }
+  }
+}

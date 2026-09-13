@@ -50,7 +50,7 @@ function intEnv(name: string, fallback: number): number {
   return Number.isFinite(n) ? n : fallback;
 }
 
-const resolvedPublicUrl = process.env.PUBLIC_BASE_URL || process.env.APP_URL || 'http://localhost:3000';
+const resolvedPublicUrl = process.env.PUBLIC_BASE_URL || process.env.APP_URL || process.env.RENDER_EXTERNAL_URL || 'http://localhost:3000';
 
 const defaultCorsOrigins = [
   'capacitor://localhost',
@@ -68,8 +68,8 @@ const defaultCorsOrigins = [
 
 export const config = {
   env: process.env.NODE_ENV ?? 'development',
-  // In AI Studio container, reverse proxy binds exclusively to port 3000
-  port: 3000,
+  // Render/Cloud Run provide PORT at runtime; keep 3000 as the local development fallback.
+  port: intEnv('PORT', 3000),
   isProduction: process.env.NODE_ENV === 'production',
 
   /** Public base URL of this backend (used for CORS origin allow-list and webhook URLs). */

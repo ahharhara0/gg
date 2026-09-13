@@ -135,7 +135,7 @@ app.use((req: Request, _res: Response, next: NextFunction) => {
 app.get('/api', (_req: Request, res: Response) => {
   res.json({
     name: 'Hadramout Hyper Production Backend',
-    version: '2.6.0',
+    version: '2.7.0',
     endpoints: [
       '/api/health',
       '/api/auth/check-phone',

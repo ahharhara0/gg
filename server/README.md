@@ -194,7 +194,7 @@ See `.env.example` for the full list. Critical ones:
 | Variable | Required | Description |
 |----------|----------|-------------|
 | `NODE_ENV` | Yes | `production` or `development` |
-| `PORT` | No | Default 3000 |
+| `PORT` | No | Runtime port supplied by the host (Render/Cloud Run); defaults to 3000 locally |
 | `PUBLIC_BASE_URL` | Yes | HTTPS URL of this backend |
 | `CORS_ORIGINS` | Yes | Comma-separated allowed origins |
 | `FIREBASE_PROJECT_ID` | Yes | Firebase project ID |

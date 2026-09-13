@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F8FAFC" />
+      <stop offset="100%" stop-color="#EDF2F7" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F43F5E" />
+      <stop offset="100%" stop-color="#E11D48" />
+    </linearGradient>
+    <filter id="drop" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#F43F5E" flood-opacity="0.18" />
+    </filter>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="500" height="500" rx="36" fill="url(#bgGrad)" />
+  <rect x="16" y="16" width="468" height="468" rx="28" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2" />
+
+  <!-- Backdrop Glow Circle -->
+  <circle cx="250" cy="210" r="140" fill="#F43F5E" opacity="0.08" />
+  <circle cx="250" cy="210" r="105" fill="#E11D48" opacity="0.12" />
+
+  <!-- Product Icon / Illustration -->
+  <g filter="url(#drop)" transform="translate(130, 90)">
+    <path d="M80 140 C60 100, 120 70, 160 100 C150 120, 120 130, 95 150 Z" fill="#FDA4AF" stroke="#E11D48" stroke-width="4"/><circle cx="150" cy="95" r="3" fill="#881337"/><path d="M160 90 L180 80 M160 95 L182 95" stroke="#E11D48" stroke-width="2"/>
+  </g>
+
+  <!-- Top Badge -->
+  <rect x="32" y="32" width="115" height="32" rx="16" fill="url(#accentGrad)" />
+  <text x="89" y="53" font-family="system-ui, sans-serif" font-size="12" font-weight="900" fill="#FFFFFF" text-anchor="middle">جامبو فاخر</text>
+
+  <!-- Hadramout Hyper Quality Seal -->
+  <g transform="translate(420, 32)">
+    <circle cx="16" cy="16" r="16" fill="#F1F5F9" />
+    <path d="M10 16l4 4 8-8" stroke="#F43F5E" stroke-width="2.5" fill="none" stroke-linecap="round" />
+  </g>
+
+  <!-- Product Title & Subtitle in Arabic -->
+  <rect x="28" y="360" width="444" height="108" rx="20" fill="#F8FAFC" />
+  <text x="250" y="405" font-family="system-ui, sans-serif" font-size="22" font-weight="900" fill="#1E293B" text-anchor="middle">جمبري بحري جامبو طازج</text>
+  <text x="250" y="438" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#64748B" text-anchor="middle">من شواطئ بحر العرب - 1 كجم</text>
+</svg>

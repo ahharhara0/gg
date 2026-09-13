@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgFresh" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#064E3B" />
+      <stop offset="50%" stop-color="#065F46" />
+      <stop offset="100%" stop-color="#047857" />
+    </linearGradient>
+    <radialGradient id="sunGlow" cx="80%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="rgba(245, 158, 11, 0.4)" />
+      <stop offset="100%" stop-color="rgba(245, 158, 11, 0)" />
+    </radialGradient>
+  </defs>
+  <!-- Background with subtle pattern -->
+  <rect width="800" height="360" rx="32" fill="url(#bgFresh)" />
+  <rect width="800" height="360" rx="32" fill="url(#sunGlow)" />
+  
+  <circle cx="700" cy="180" r="140" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="2" />
+  <circle cx="700" cy="180" r="90" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1.5" />
+
+  <!-- Fresh Produce Illustration (Apple, Carrot, Leaves) -->
+  <g transform="translate(560, 80) scale(1.3)">
+    <!-- Basket / Tray -->
+    <ellipse cx="60" cy="140" rx="65" ry="18" fill="rgba(0,0,0,0.25)" />
+    <path d="M10 135 Q60 165 110 135 L100 100 Q60 110 20 100 Z" fill="#78350F" opacity="0.9" />
+    <!-- Apple -->
+    <circle cx="45" cy="85" r="26" fill="#DC2626" />
+    <path d="M45 60 Q48 50 56 46" stroke="#15803D" stroke-width="3" fill="none" stroke-linecap="round" />
+    <ellipse cx="58" cy="48" rx="8" ry="4" fill="#22C55E" transform="rotate(-20 58 48)" />
+    <!-- Orange -->
+    <circle cx="85" cy="90" r="24" fill="#F97316" />
+    <circle cx="83" cy="86" r="3" fill="#EA580C" opacity="0.6" />
+    <!-- Greens / Leaves -->
+    <path d="M20 75 Q30 40 42 65 Q30 70 20 75 Z" fill="#10B981" />
+    <path d="M75 60 Q95 40 100 68 Q88 66 75 60 Z" fill="#34D399" />
+  </g>
+
+  <!-- Content (Arabic default) -->
+  <g transform="translate(60, 70)">
+    <rect x="0" y="0" width="130" height="32" rx="16" fill="#F59E0B" />
+    <text x="65" y="21" font-family="system-ui, sans-serif" font-size="13" font-weight="900" fill="#78350F" text-anchor="middle">موسم الحصاد الطازج</text>
+    
+    <text x="0" y="90" font-family="system-ui, sans-serif" font-size="44" font-weight="900" fill="#FFFFFF">خضار وفواكه طازجة يومياً</text>
+    <text x="0" y="130" font-family="system-ui, sans-serif" font-size="20" font-weight="600" fill="#A7F3D0">مباشرة من مزارع وادي حضرموت إلى عتبة منزلك</text>
+    
+    <!-- CTA Pill -->
+    <rect x="0" y="165" width="160" height="46" rx="23" fill="#FFFFFF" />
+    <text x="80" y="194" font-family="system-ui, sans-serif" font-size="15" font-weight="900" fill="#065F46" text-anchor="middle">تسوق العروض الآن ←</text>
+  </g>
+</svg>

@@ -1,0 +1,43 @@
+{
+  "short_name": "حضرموت هايبر",
+  "name": "حضرموت هايبر ماركت | Hadramout Hyper",
+  "description": "تطبيق التسوق الرسمي من حضرموت هايبر ماركت - تجربة تسوق هايبر ماركت عصرية فائقة السرعة مع المساعد الصوتي والتتبع المباشر",
+  "icons": [
+    {
+      "src": "/pwa-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/pwa-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#F4F8F5",
+  "theme_color": "#0A7D8C",
+  "display": "standalone",
+  "orientation": "portrait",
+  "lang": "ar",
+  "dir": "rtl",
+  "categories": ["shopping", "food", "lifestyle"],
+  "shortcuts": [
+    {
+      "name": "الرئيسية",
+      "short_name": "الرئيسية",
+      "description": "تصفح العروض والمنتجات الطازجة",
+      "url": "/?tab=home",
+      "icons": [{ "src": "/pwa-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "الكتالوج",
+      "short_name": "الكتالوج",
+      "description": "استكشف جميع أقسام الهايبر",
+      "url": "/?tab=catalog",
+      "icons": [{ "src": "/pwa-192x192.png", "sizes": "192x192" }]
+    }
+  ]
+}

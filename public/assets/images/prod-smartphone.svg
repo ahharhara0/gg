@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F8FAFC" />
+      <stop offset="100%" stop-color="#EDF2F7" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563EB" />
+      <stop offset="100%" stop-color="#1D4ED8" />
+    </linearGradient>
+    <filter id="drop" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#2563EB" flood-opacity="0.18" />
+    </filter>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="500" height="500" rx="36" fill="url(#bgGrad)" />
+  <rect x="16" y="16" width="468" height="468" rx="28" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2" />
+
+  <!-- Backdrop Glow Circle -->
+  <circle cx="250" cy="210" r="140" fill="#2563EB" opacity="0.08" />
+  <circle cx="250" cy="210" r="105" fill="#1D4ED8" opacity="0.12" />
+
+  <!-- Product Icon / Illustration -->
+  <g filter="url(#drop)" transform="translate(130, 90)">
+    <rect x="90" y="65" width="60" height="110" rx="10" fill="#1E293B" stroke="#3B82F6" stroke-width="3"/><rect x="95" y="75" width="50" height="85" rx="4" fill="#38BDF8"/><circle cx="120" cy="167" r="3" fill="#64748B"/>
+  </g>
+
+  <!-- Top Badge -->
+  <rect x="32" y="32" width="115" height="32" rx="16" fill="url(#accentGrad)" />
+  <text x="89" y="53" font-family="system-ui, sans-serif" font-size="12" font-weight="900" fill="#FFFFFF" text-anchor="middle">ضمان الوكيل</text>
+
+  <!-- Hadramout Hyper Quality Seal -->
+  <g transform="translate(420, 32)">
+    <circle cx="16" cy="16" r="16" fill="#F1F5F9" />
+    <path d="M10 16l4 4 8-8" stroke="#2563EB" stroke-width="2.5" fill="none" stroke-linecap="round" />
+  </g>
+
+  <!-- Product Title & Subtitle in Arabic -->
+  <rect x="28" y="360" width="444" height="108" rx="20" fill="#F8FAFC" />
+  <text x="250" y="405" font-family="system-ui, sans-serif" font-size="22" font-weight="900" fill="#1E293B" text-anchor="middle">هاتف شاومي ريدمي نوت 13</text>
+  <text x="250" y="438" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#64748B" text-anchor="middle">ذاكرة 256 جيجابايت - شاشة AMOLED</text>
+</svg>

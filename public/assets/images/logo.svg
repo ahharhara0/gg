@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120" width="100%" height="100%">
+  <defs>
+    <linearGradient id="gradLogo" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0E8A5E" />
+      <stop offset="100%" stop-color="#075E3F" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+  </defs>
+  <!-- Background Badge -->
+  <rect x="8" y="10" width="100" height="100" rx="24" fill="url(#gradLogo)" />
+  <rect x="14" y="16" width="88" height="88" rx="20" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2" />
+  
+  <!-- Shopping Cart with Palm Tree / Mountain Motif -->
+  <path d="M36 42h8l8 26h28l6-18H48" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="54" cy="76" r="4.5" fill="#F59E0B" />
+  <circle cx="76" cy="76" r="4.5" fill="#F59E0B" />
+  <path d="M64 34v16M58 40l6-6 6 6" fill="none" stroke="#F59E0B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- Arabic Typography -->
+  <text x="125" y="58" font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="900" fill="#0E8A5E">حضرموت هايبر</text>
+  <text x="126" y="86" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#6B7280" letter-spacing="1">HADRAMOUT HYPERMARKET</text>
+  <rect x="125" y="96" width="70" height="4" rx="2" fill="url(#goldGrad)" />
+</svg>

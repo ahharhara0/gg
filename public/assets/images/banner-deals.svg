@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgDeals" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7C2D12" />
+      <stop offset="50%" stop-color="#C2410C" />
+      <stop offset="100%" stop-color="#EA580C" />
+    </linearGradient>
+    <radialGradient id="burst" cx="70%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="rgba(254, 240, 138, 0.35)" />
+      <stop offset="100%" stop-color="rgba(254, 240, 138, 0)" />
+    </radialGradient>
+  </defs>
+  <rect width="800" height="360" rx="32" fill="url(#bgDeals)" />
+  <rect width="800" height="360" rx="32" fill="url(#burst)" />
+
+  <!-- Mega Discount Badge Graphic -->
+  <g transform="translate(560, 60)">
+    <circle cx="90" cy="110" r="100" fill="#FBBF24" opacity="0.2" />
+    <circle cx="90" cy="110" r="80" fill="#DC2626" stroke="#FEF08A" stroke-width="4" stroke-dasharray="10 4" />
+    <text x="90" y="95" font-family="system-ui, sans-serif" font-size="20" font-weight="900" fill="#FEF08A" text-anchor="middle">خصومات تصل إلى</text>
+    <text x="90" y="145" font-family="system-ui, sans-serif" font-size="52" font-weight="900" fill="#FFFFFF" text-anchor="middle">50%</text>
+  </g>
+
+  <!-- Content -->
+  <g transform="translate(60, 75)">
+    <rect x="0" y="0" width="140" height="32" rx="16" fill="#FBBF24" />
+    <text x="70" y="21" font-family="system-ui, sans-serif" font-size="13" font-weight="900" fill="#7C2D12" text-anchor="middle">عروض الهايبر الكبرى</text>
+    
+    <text x="0" y="90" font-family="system-ui, sans-serif" font-size="44" font-weight="900" fill="#FFFFFF">تخفيضات نهاية الأسبوع</text>
+    <text x="0" y="130" font-family="system-ui, sans-serif" font-size="20" font-weight="600" fill="#FED7AA">وفّر أكثر على مئات المنتجات الغذائية والمواد التموينية</text>
+    
+    <rect x="0" y="165" width="165" height="46" rx="23" fill="#FFFFFF" />
+    <text x="82" y="194" font-family="system-ui, sans-serif" font-size="15" font-weight="900" fill="#C2410C" text-anchor="middle">تصفح التخفيضات ←</text>
+  </g>
+</svg>

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F8FAFC" />
+      <stop offset="100%" stop-color="#EDF2F7" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EC4899" />
+      <stop offset="100%" stop-color="#DB2777" />
+    </linearGradient>
+    <filter id="drop" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#EC4899" flood-opacity="0.18" />
+    </filter>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="500" height="500" rx="36" fill="url(#bgGrad)" />
+  <rect x="16" y="16" width="468" height="468" rx="28" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2" />
+
+  <!-- Backdrop Glow Circle -->
+  <circle cx="250" cy="210" r="140" fill="#EC4899" opacity="0.08" />
+  <circle cx="250" cy="210" r="105" fill="#DB2777" opacity="0.12" />
+
+  <!-- Product Icon / Illustration -->
+  <g filter="url(#drop)" transform="translate(130, 90)">
+    <path d="M85 85 L155 85 C150 145, 90 145, 85 85 Z" fill="#FCE7F3" stroke="#DB2777" stroke-width="4"/><circle cx="120" cy="110" r="10" fill="#F472B6"/>
+  </g>
+
+  <!-- Top Badge -->
+  <rect x="32" y="32" width="115" height="32" rx="16" fill="url(#accentGrad)" />
+  <text x="89" y="53" font-family="system-ui, sans-serif" font-size="12" font-weight="900" fill="#FFFFFF" text-anchor="middle">حماية وراحة</text>
+
+  <!-- Hadramout Hyper Quality Seal -->
+  <g transform="translate(420, 32)">
+    <circle cx="16" cy="16" r="16" fill="#F1F5F9" />
+    <path d="M10 16l4 4 8-8" stroke="#EC4899" stroke-width="2.5" fill="none" stroke-linecap="round" />
+  </g>
+
+  <!-- Product Title & Subtitle in Arabic -->
+  <rect x="28" y="360" width="444" height="108" rx="20" fill="#F8FAFC" />
+  <text x="250" y="405" font-family="system-ui, sans-serif" font-size="22" font-weight="900" fill="#1E293B" text-anchor="middle">حفاضات أطفال مقاس 4 كبير</text>
+  <text x="250" y="438" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#64748B" text-anchor="middle">امتصاص جاف حتى 12 ساعة - 64 حبة</text>
+</svg>

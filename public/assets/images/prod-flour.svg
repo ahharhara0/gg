@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F8FAFC" />
+      <stop offset="100%" stop-color="#EDF2F7" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#CA8A04" />
+      <stop offset="100%" stop-color="#EAB308" />
+    </linearGradient>
+    <filter id="drop" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#CA8A04" flood-opacity="0.18" />
+    </filter>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="500" height="500" rx="36" fill="url(#bgGrad)" />
+  <rect x="16" y="16" width="468" height="468" rx="28" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2" />
+
+  <!-- Backdrop Glow Circle -->
+  <circle cx="250" cy="210" r="140" fill="#CA8A04" opacity="0.08" />
+  <circle cx="250" cy="210" r="105" fill="#EAB308" opacity="0.12" />
+
+  <!-- Product Icon / Illustration -->
+  <g filter="url(#drop)" transform="translate(150, 110)">
+    
+      <!-- Flour Bag -->
+      <path d="M60 45 L140 45 L150 170 L50 170 Z" fill="#FEF08A" stroke="#CA8A04" stroke-width="4" />
+      <rect x="75" y="85" width="50" height="50" rx="8" fill="#CA8A04" />
+      <text x="100" y="115" font-family="system-ui" font-size="14" font-weight="900" fill="#FFFFFF" text-anchor="middle">بر</text>
+    
+  </g>
+
+  <!-- Top Badge -->
+  
+  <rect x="32" y="32" width="110" height="32" rx="16" fill="url(#accentGrad)" />
+  <text x="87" y="53" font-family="system-ui, sans-serif" font-size="12" font-weight="900" fill="#FFFFFF" text-anchor="middle">صحي وغني بالألياف</text>
+  
+
+  <!-- Hadramout Hyper Quality Seal -->
+  <g transform="translate(420, 32)">
+    <circle cx="16" cy="16" r="16" fill="#F1F5F9" />
+    <path d="M10 16l4 4 8-8" stroke="#CA8A04" stroke-width="2.5" fill="none" stroke-linecap="round" />
+  </g>
+
+  <!-- Product Title & Subtitle in Arabic -->
+  <rect x="28" y="360" width="444" height="108" rx="20" fill="#F8FAFC" />
+  <text x="250" y="405" font-family="system-ui, sans-serif" font-size="22" font-weight="900" fill="#1E293B" text-anchor="middle">دقيق قمح بر فاخر</text>
+  <text x="250" y="438" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#64748B" text-anchor="middle">مطحون طازج حبوب كاملة 10 كجم</text>
+</svg>

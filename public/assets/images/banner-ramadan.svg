@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgRamadan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A" />
+      <stop offset="60%" stop-color="#1E1B4B" />
+      <stop offset="100%" stop-color="#312E81" />
+    </linearGradient>
+    <radialGradient id="moonGlow" cx="80%" cy="35%" r="50%">
+      <stop offset="0%" stop-color="rgba(253, 224, 71, 0.4)" />
+      <stop offset="100%" stop-color="rgba(253, 224, 71, 0)" />
+    </radialGradient>
+  </defs>
+  <rect width="800" height="360" rx="32" fill="url(#bgRamadan)" />
+  <rect width="800" height="360" rx="32" fill="url(#moonGlow)" />
+
+  <!-- Crescent Moon & Lantern Graphic -->
+  <g transform="translate(620, 60)">
+    <!-- Crescent -->
+    <path d="M60 20 A70 70 0 1 0 130 90 A60 60 0 1 1 60 20 Z" fill="#FDE047" opacity="0.9" />
+    <!-- Stars -->
+    <circle cx="10" cy="40" r="3" fill="#FFFFFF" />
+    <circle cx="130" cy="140" r="2.5" fill="#FFFFFF" />
+    <circle cx="30" cy="120" r="2" fill="#FDE047" />
+    <!-- Lantern -->
+    <path d="M-20 60 L-10 40 L0 40 L10 60 L5 110 L-15 110 Z" fill="#D97706" stroke="#FDE047" stroke-width="2" />
+    <circle cx="-5" cy="80" r="10" fill="#FEF08A" />
+  </g>
+
+  <!-- Content -->
+  <g transform="translate(60, 75)">
+    <rect x="0" y="0" width="160" height="32" rx="16" fill="#FDE047" />
+    <text x="80" y="21" font-family="system-ui, sans-serif" font-size="13" font-weight="900" fill="#1E1B4B" text-anchor="middle">سلة الخير والمواسم</text>
+    
+    <text x="0" y="90" font-family="system-ui, sans-serif" font-size="44" font-weight="900" fill="#FFFFFF">مير الأسر وكرتون البركة</text>
+    <text x="0" y="130" font-family="system-ui, sans-serif" font-size="20" font-weight="600" fill="#C7D2FE">عسل دوعني، تمور فاخرة، أجود أنواع الأرز والزيوت بأسعار الجملة</text>
+    
+    <rect x="0" y="165" width="165" height="46" rx="23" fill="#FDE047" />
+    <text x="82" y="194" font-family="system-ui, sans-serif" font-size="15" font-weight="900" fill="#1E1B4B" text-anchor="middle">اطلب السلة الرمضانية ←</text>
+  </g>
+</svg>

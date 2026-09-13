@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F8FAFC" />
+      <stop offset="100%" stop-color="#EDF2F7" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D97706" />
+      <stop offset="100%" stop-color="#F59E0B" />
+    </linearGradient>
+    <filter id="drop" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#D97706" flood-opacity="0.18" />
+    </filter>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="500" height="500" rx="36" fill="url(#bgGrad)" />
+  <rect x="16" y="16" width="468" height="468" rx="28" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2" />
+
+  <!-- Backdrop Glow Circle -->
+  <circle cx="250" cy="210" r="140" fill="#D97706" opacity="0.08" />
+  <circle cx="250" cy="210" r="105" fill="#F59E0B" opacity="0.12" />
+
+  <!-- Product Icon / Illustration -->
+  <g filter="url(#drop)" transform="translate(150, 110)">
+    
+      <!-- Honey Jar -->
+      <rect x="40" y="50" width="120" height="130" rx="28" fill="#F59E0B" />
+      <rect x="50" y="24" width="100" height="26" rx="8" fill="#B45309" />
+      <!-- Honey pattern & label -->
+      <rect x="55" y="80" width="90" height="70" rx="12" fill="#FEF3C7" />
+      <circle cx="100" cy="115" r="18" fill="#F59E0B" opacity="0.3" />
+      <!-- Dipper dripping -->
+      <path d="M100 95 L100 135 M88 115 L112 115" stroke="#B45309" stroke-width="4" stroke-linecap="round" />
+      <path d="M135 60 Q145 75 140 90 Q135 105 142 115" stroke="#FDE68A" stroke-width="6" fill="none" stroke-linecap="round" />
+    
+  </g>
+
+  <!-- Top Badge -->
+  
+  <rect x="32" y="32" width="110" height="32" rx="16" fill="url(#accentGrad)" />
+  <text x="87" y="53" font-family="system-ui, sans-serif" font-size="12" font-weight="900" fill="#FFFFFF" text-anchor="middle">طبيعي 100%</text>
+  
+
+  <!-- Hadramout Hyper Quality Seal -->
+  <g transform="translate(420, 32)">
+    <circle cx="16" cy="16" r="16" fill="#F1F5F9" />
+    <path d="M10 16l4 4 8-8" stroke="#D97706" stroke-width="2.5" fill="none" stroke-linecap="round" />
+  </g>
+
+  <!-- Product Title & Subtitle in Arabic -->
+  <rect x="28" y="360" width="444" height="108" rx="20" fill="#F8FAFC" />
+  <text x="250" y="405" font-family="system-ui, sans-serif" font-size="22" font-weight="900" fill="#1E293B" text-anchor="middle">عسل سدر دوعني فاخر</text>
+  <text x="250" y="438" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#64748B" text-anchor="middle">طبيعي 100% - مناحل وادي دوعن</text>
+</svg>

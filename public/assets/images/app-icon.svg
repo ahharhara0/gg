@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="appGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0E8A5E" />
+      <stop offset="100%" stop-color="#064E3B" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#appGrad)" />
+  <rect x="24" y="24" width="464" height="464" rx="96" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="6" />
+  
+  <!-- Cart & Palm Icon -->
+  <g transform="translate(96, 96)">
+    <path d="M40 70h50l35 110h130l28-80H110" fill="none" stroke="#FFFFFF" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" />
+    <circle cx="140" cy="235" r="24" fill="#F59E0B" />
+    <circle cx="240" cy="235" r="24" fill="#F59E0B" />
+    <path d="M190 30v70M165 55l25-25 25 25" fill="none" stroke="#F59E0B" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+</svg>

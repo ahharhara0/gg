@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!--
+        Production Network Security Configuration for Hadramout Hyper.
+
+        - Cleartext traffic is BLOCKED by default (HTTPS only).
+        - Localhost is allowed for development builds only.
+        - The backend MUST be reachable via HTTPS in production.
+    -->
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+
+    <!-- Debug-only override: allow cleartext for local development server. -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">localhost</domain>
+        <domain includeSubdomains="true">10.0.2.2</domain>
+    </domain-config>
+</network-security-config>
